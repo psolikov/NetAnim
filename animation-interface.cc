@@ -2605,28 +2605,6 @@ AnimationInterface::WriteXmlRouting (uint32_t nodeId, std::string routingInfo)
   WriteN (element.ToString (), m_routingF);
 }
 
-void
-Animxmlparser::parseGeneric (ParsedElement & parsedElement, )
-{
-  parsedElement.packetrx_fromId = m_reader->attributes ().value ("fId").toString ().toUInt ();
-  parsedElement.packetrx_fbTx = m_reader->attributes ().value ("fbTx").toString ().toDouble ();
-  parsedElement.packetrx_lbTx = m_reader->attributes ().value ("lbTx").toString ().toDouble ();
-  setMaxSimulationTime (parsedElement.packetrx_lbTx);
-  parsedElement.packetrx_toId = m_reader->attributes ().value ("tId").toString ().toUInt ();
-  parsedElement.packetrx_fbRx = m_reader->attributes ().value ("fbRx").toString ().toDouble ();
-  parsedElement.packetrx_lbRx = m_reader->attributes ().value ("lbRx").toString ().toDouble ();
-  if (!parsedElement.packetrx_lbRx && parsedElement.packetrx_fbRx)
-    {
-      parsedElement.packetrx_lbRx = parsedElement.packetrx_fbRx;
-    }
-  setMaxSimulationTime (parsedElement.packetrx_lbRx);
-  parsedElement.meta_info = m_reader->attributes ().value ("meta-info").toString ();
-  if (parsedElement.meta_info == "")
-    {
-      parsedElement.meta_info = "null";
-    }
-}
-
 void 
 AnimationInterface::WriteXmlRp (uint32_t nodeId, std::string destination, Ipv4RoutePathElements rpElements)
 {
@@ -3016,13 +2994,6 @@ AnimationInterface::WriteNonP2pLinkProperties (uint32_t id, std::string ipAddres
   parsedElement.fromNodeDescription = ipAddress;
   return parsedElement;
 }
-
-
-ParsedElement parsedElement;
-  parsedElement.type = XML_NONP2P_LINK;
-  parsedElement.link_fromId = m_reader->attributes ().value ("id").toString ().toUInt ();
-  parsedElement.fromNodeDescription = m_reader->attributes ().value ("ipAddress").toString ();
-  return parsedElement;
 
 
 /***** AnimXmlElement  *****/
