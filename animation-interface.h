@@ -1468,7 +1468,7 @@ private:
    */
   void WriteXmlUpdateNodeDescription (uint32_t nodeId);
 
-  ParsedElement WriteXmlUpdateNodeDescription (uint32_t nodeId);
+  ParsedElement WriteUpdateNodeDescription (uint32_t nodeId);
   /**
    * Write XML update node size function
    * \param nodeId the node ID
@@ -1560,7 +1560,7 @@ private:
                                  double lbRx,
                                  std::string metaInfo = ""); 
 
-  parse WriteP (std::string pktType, 
+  ParsedElement WriteP (std::string pktType, 
                                  uint32_t fId, 
                                  double fbTx, 
                                  double lbTx, 
